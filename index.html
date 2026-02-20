@@ -7,14 +7,20 @@
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap");
 
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+    }
+
     :root {
-      --fg: #fff8e8;
-      --accent: #ffd36a;
+      --fg: #ffd046;
+      --stroke: #ffdf7a;
       --enter-y: 24px;
-      --enter-scale: 0.88;
-      --enter-rotate: -4deg;
-      --peak-rotate: 1.5deg;
-      --exit-scale: 1.05;
+      --enter-scale: 0.92;
+      --exit-scale: 1.03;
+      --enter-rotate: -12deg;
+      --peak-rotate: 2.8deg;
       --shift-x: 0px;
     }
 
@@ -47,60 +53,54 @@
       padding-inline: 0.05em 0.1em;
       font-size: clamp(3rem, 16vw, 10rem);
       font-weight: 800;
-      letter-spacing: 0.22em;
-      color: transparent;
+      letter-spacing: 0.18em;
+      color: var(--fg);
       text-transform: uppercase;
-      background: linear-gradient(90deg, #fff, var(--accent), var(--fg), #fff);
-      background-size: 220% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-stroke: 1px rgba(255, 248, 232, 0.65);
-      text-shadow: 0 0 10px rgba(255, 211, 106, 0.12);
+      -webkit-text-stroke: 0.9px var(--stroke);
+      text-shadow: none;
       opacity: 0;
       transform: translateX(var(--shift-x)) translateY(var(--enter-y)) scale(var(--enter-scale)) rotate(var(--enter-rotate));
       animation: cinematicIn 2.8s cubic-bezier(0.2, 0.8, 0.15, 1) forwards;
-      will-change: transform, opacity, background-position;
+      will-change: transform, opacity;
     }
 
     @keyframes cinematicIn {
       0% {
         opacity: 0;
         transform: translateX(var(--shift-x)) translateY(var(--enter-y)) scale(var(--enter-scale)) rotate(var(--enter-rotate));
-        background-position: 0% 50%;
       }
-      20% {
+      24% {
         opacity: 1;
         transform: translateX(var(--shift-x)) translateY(0) scale(1.03) rotate(var(--peak-rotate));
       }
-      40% {
+      46% {
         transform: translateX(var(--shift-x)) translateY(0) scale(1) rotate(0deg);
-        background-position: 100% 50%;
       }
       82% {
         opacity: 1;
-        transform: translateX(var(--shift-x)) scale(1);
+        transform: translateX(var(--shift-x)) scale(1) rotate(0deg);
       }
       100% {
         opacity: 0;
-        transform: translateX(var(--shift-x)) scale(var(--exit-scale));
+        transform: translateX(var(--shift-x)) scale(var(--exit-scale)) rotate(0deg);
       }
     }
 
     @media (max-width: 600px) {
       :root {
         --enter-y: 16px;
-        --enter-scale: 0.93;
-        --enter-rotate: -1deg;
-        --peak-rotate: 0deg;
+        --enter-scale: 0.96;
         --exit-scale: 1.01;
-        --shift-x: -8px;
+        --enter-rotate: -5deg;
+        --peak-rotate: 0.8deg;
+        --shift-x: -4px;
       }
 
       .poster {
         font-size: clamp(2.1rem, 15vw, 4.8rem);
-        letter-spacing: 0.1em;
+        letter-spacing: 0.09em;
         padding-inline: 0.04em 0.14em;
-        -webkit-text-stroke: 0.8px rgba(255, 248, 232, 0.65);
+        -webkit-text-stroke: 0.8px var(--stroke);
       }
     }
   </style>
