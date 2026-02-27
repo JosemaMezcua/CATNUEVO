@@ -23,7 +23,7 @@ body {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: transparent;
+  background: rgba(232, 228, 226, 0.72);
   padding: 16px;
   padding-top: max(16px, env(safe-area-inset-top));
   padding-right: max(16px, env(safe-area-inset-right));
